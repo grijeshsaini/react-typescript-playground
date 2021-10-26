@@ -1,8 +1,8 @@
 import React from 'react';
 import {Route, BrowserRouter} from "react-router-dom";
-import {Repos} from "../Components/Repos/Repos";
 import {UserList} from "../Components/User/UserList";
 import {GithubClient} from "../Api/GithubClient";
+import {UserDetails} from "../Components/User/UserDetails";
 
 function App() {
     const gitHubClient = new GithubClient();
@@ -11,9 +11,9 @@ function App() {
         <Route exact path={"/"}>
           <UserList githubClient={gitHubClient}/>
         </Route>
-        <Route exact path={"/users/:login"}>
-          <Repos/>
-        </Route>
+        <Route exact path={"/users/:login"} render={(props) => (
+           <UserDetails login={props.match.params.login} githubClient={gitHubClient} />
+        )}/>
       </BrowserRouter>
   );
 }

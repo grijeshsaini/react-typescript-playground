@@ -43,7 +43,7 @@ export const UserList = ({githubClient}: UserProps) => {
                             <td>{data.id}</td>
                             <td>{data.login}</td>
                             <td>
-                                <Link to={`/users/${data.login}`}>View</Link>
+                                <Link data-testid={"viewLink"} to={`/users/${data.login}`}>View</Link>
                             </td>
                         </tr>
                     )

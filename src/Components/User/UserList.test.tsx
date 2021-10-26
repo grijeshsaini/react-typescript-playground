@@ -38,8 +38,11 @@ describe("Users", () => {
         expect(await screen.findByText("1")).toBeInTheDocument();
         expect(await screen.findByText("grijesh")).toBeInTheDocument();
 
-        const links = await document.querySelectorAll("a");
-        expect(links[0].href).toBe("http://localhost/users/grijesh");
+        /*const links = await document.querySelectorAll("a");
+        expect(links[0].href).toBe("http://localhost/users/grijesh");*/
+        const viewLink = await screen.findByTestId("viewLink") as HTMLAnchorElement;
+        expect(viewLink.href).toBe("http://localhost/users/grijesh");
+        expect(viewLink).toHaveTextContent("View");
         expect(githubClientMock.getUsers).toBeCalled();
     });
 
