@@ -84,7 +84,6 @@ describe("Github API", () => {
 
         test("getUsers should return error when server return 500", async () => {
             window.fetch = jest.fn().mockResolvedValueOnce({
-                json:() => Promise.resolve("Error"),
                 status: 500
             })
 
